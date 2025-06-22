@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <h1>Topic Manager</h1>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <button class="link-btn" onclick="showRegister()">Don't have an account? Register here</button>
+            <div id="loginError" class="error" style="display: none;"></div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="registerPage" class="page">
+            <h1>Topic Manager</h1>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <button class="link-btn" onclick="showLogin()">Already have an account? Login here</button>
+            <div id="registerError" class="error" style="display: none;"></div>
+            <div id="registerSuccess" class="success" style="display: none;"></div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <h1>My Topics</h1>
+            <div class="user-info">
+                <div class="user-email" id="userEmail"></div>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="showAddTopic()">Add New Topic</button>
+            <button class="btn btn-small" onclick="logout()">Logout</button>
+            
+            <div id="loading" class="loading" style="display: none;">Loading topics...</div>
+            <div id="topicsList"></div>
+        </div>
+
+        <!-- Add Topic Page -->
+        <div id="addTopicPage" class="page">
+            <h2>Add New Topic</h2>
+            <form id="addTopicForm">
+                <div class="form-group">
+                    <label for="newTopic">Topic:</label>
+                    <textarea id="newTopic" placeholder="Enter your topic here..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Save Topic</button>
+                <button type="button" class="btn btn-secondary" onclick="showDashboard()">Cancel</button>
+            </form>
+            <div id="addTopicError" class="error" style="display: none;"></div>
+            <div id="addTopicSuccess" class="success" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
