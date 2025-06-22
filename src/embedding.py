@@ -5,7 +5,6 @@ from transformers import AutoTokenizer, AutoModel
 from langchain.embeddings.base import Embeddings
 
 class NomicEmbeddings(Embeddings):
-    """Custom embedding class cho Nomic AI model (chạy trên GPU nếu có)."""
     
     def __init__(self):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -26,7 +25,6 @@ class NomicEmbeddings(Embeddings):
         return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        """Embed một danh sách documents (chạy trên GPU nếu có)."""
         prefixed_texts = [f"search_document: {t}" for t in texts]
         
         encoded_input = self.tokenizer(
@@ -47,7 +45,6 @@ class NomicEmbeddings(Embeddings):
         return embeddings.cpu().numpy().tolist()
 
     def embed_query(self, text: str) -> List[float]:
-        """Embed một câu query duy nhất (chạy trên GPU nếu có)."""
         query_text = f"search_query: {text}"
         
         encoded_input = self.tokenizer(
